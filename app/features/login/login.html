@@ -21,7 +21,7 @@
     <div class="col-lg-4 col-lg-offset-4">
       <img src="../../assets/images/flat-avatar.png" class="user-avatar" />
       <h1>HRMS <small>LogIn</small></h1>
-      <form role="form" name="myForm" onsubmit="window.location.href ='#/admin'">
+      <form role="form" name="myForm">
         <div class="form-content">
           <div class="form-group">
             <input type="text" name="userName" class="form-control input-underline input-lg" data-ng-model="formData.userName" id="userName" placeholder="User Name" required>
@@ -35,7 +35,7 @@
             <span ng-show="!myForm.password.$error.required && !myForm.password.$error.minlength && !myForm.password.$error.maxlength && myForm.password.$error.pattern && myForm.password.$dirty">Must contain one lower &amp; uppercase letter, and one non-alpha character (a number or a symbol.)</span>
           </div>
         </div>
-        <button type="submit" class="btn rounded-btn" data-ng-disabled="myForm.$invalid"> Log in </button>
+        <button type="submit" class="btn rounded-btn" data-ng-disabled="myForm.$invalid", data-ng-click="doLogin()"> Log in </button>
       </form>
     </div>
   </div>
