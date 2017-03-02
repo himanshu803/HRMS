@@ -1,0 +1,47 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#/admin">Admin Home</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="#/admin/createEmployee">Create New Employee</a></li>
+      <li><a href="#/admin/viewEmployee">View Employee by ID</a></li>
+      <li><a href="#/admin/viewAllEmployee">View All Employee</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#/home"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+</nav>
+<div class="container" data-ng-controller="viewEmployeeCtrl">
+  <h1>View Employee by ID</h1>
+  <div class="form-group col-xs-12 col-sm-3 col-md-2">
+    <input type="text" class="form-control" id="employeeId" placeholder="Employee ID" ng-model="employeeId">
+  </div>
+    <button class="btn btn-primary" ng-click="getEmployee()">Search</button>
+  <br><br>
+  <div class="container">
+    <div class="col-lg-12">
+      <strong class="col-lg-2">Employee ID: </strong>
+      <b class="col-lg-10">{{selectedEmployee.id}}</b>
+    </div>
+    <br>
+    <div class="col-lg-12">
+      <strong class="col-lg-2">Employee Name: </strong>
+      <b class="col-lg-10">{{selectedEmployee.name}}</b>
+    </div>
+    <div class="col-lg-12">
+      <strong class="col-lg-2">Email: </strong>
+      <b class="col-lg-10">{{selectedEmployee.email}}</b>
+    </div>
+    <div class="col-lg-12">
+      <strong class="col-lg-2">Role: </strong>
+      <b class="col-lg-10">{{selectedEmployee.role}}</b>
+    </div>
+    <div class="col-lg-12">
+      <strong class="col-lg-2">Company:  </strong>
+      <b class="col-lg-10">{{selectedEmployee.company}}</b>
+    </div>
+  </div>
+</div>

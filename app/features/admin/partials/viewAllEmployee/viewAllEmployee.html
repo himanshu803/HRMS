@@ -1,0 +1,41 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#/admin">Admin Home</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="#/admin/createEmployee">Create New Employee</a></li>
+      <li><a href="#/admin/viewEmployee">View Employee by ID</a></li>
+      <li><a href="#/admin/viewAllEmployee">View All Employee</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#/home"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+</nav>
+<div class="container" data-ng-controller="viewAllEmployeeCtrl">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Employee ID</th>
+      <th>Employee Name</th>
+      <th>Email ID</th>
+      <th>Password</th>
+      <th>Role</th>
+      <th>Company</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="employee in employees">
+      <td>{{employee.id}}</td>
+      <td>{{employee.name}}</td>
+      <td>{{employee.email}}</td>
+      <td>{{employee.password}}</td>
+      <td>{{employee.role}}</td>
+      <td>{{employee.company}}</td>
+    </tr>
+    </tr>
+    </tbody>
+  </table>
+</div>

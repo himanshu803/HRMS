@@ -1,0 +1,42 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#!/home">HRIMS</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li class="dropdown"><a href="#">Page 1</a>
+      </li>
+      <li><a href="#">Page 2</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+    <!--  <li><a href="#!/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>-->
+    </ul>
+  </div>
+</nav><!-- end Navbar -->
+
+<div class="login-page animate">
+  <div class="row">
+    <div class="col-lg-4 col-lg-offset-4">
+      <img src="../../assets/images/flat-avatar.png" class="user-avatar" />
+      <h1>HRMS <small>LogIn</small></h1>
+      <form role="form" name="myForm" onsubmit="window.location.href ='#/admin'">
+        <div class="form-content">
+          <div class="form-group">
+            <input type="text" name="userName" class="form-control input-underline input-lg" data-ng-model="formData.userName" id="userName" placeholder="User Name" required>
+            <span ng-show="myForm.userName.$error.required && myForm.userName.$dirty">required</span>
+            <span ng-show="!myForm.userName.$error.required && myForm.userName.$error.email && myForm.userName.$dirty">invalid email</span>
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control input-underline input-lg" id="password" placeholder="Password" name="password" data-ng-model="formData.password" ng-minlength="8" ng-maxlength="20" ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" required>
+            <span ng-show="myForm.password.$error.required && myForm.password.$dirty">required</span>
+            <span ng-show="!myForm.password.$error.required && (myForm.password.$error.minlength || myForm.password.$error.maxlength) && myForm.password.$dirty">Passwords must be between 8 and 20 characters.</span>
+            <span ng-show="!myForm.password.$error.required && !myForm.password.$error.minlength && !myForm.password.$error.maxlength && myForm.password.$error.pattern && myForm.password.$dirty">Must contain one lower &amp; uppercase letter, and one non-alpha character (a number or a symbol.)</span>
+          </div>
+        </div>
+        <button type="submit" class="btn rounded-btn" data-ng-disabled="myForm.$invalid"> Log in </button>
+      </form>
+    </div>
+  </div>
+</div>
