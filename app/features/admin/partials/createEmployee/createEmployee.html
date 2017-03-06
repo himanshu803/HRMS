@@ -14,7 +14,7 @@
   </div>
 </nav>
 </nav><br><br>
-<div class="container">
+<div class="container" data-ng-controller="createEmployeeCtrl">
   <form action="" role="form" name="employeeForm">
     <div class="form-group col-lg-12">
       <label for="employeeId" class="col-xs-12 col-sm-3 col-md-2">Employee ID:</label>
@@ -25,13 +25,13 @@
       <span class="col-xs-12 col-sm-4 col-md-5" ng-show="!employeeForm.employeeId.$error.required && employeeForm.employeeId.$error.text && employeeForm.employeeId.$dirty">Invalid ID</span>
     </div>
     <div class="form-group col-lg-12">
-      <label for="password" class="col-xs-12 col-sm-3 col-md-2">Employee Password:</label>
+      <label for="employeePassword" class="col-xs-12 col-sm-3 col-md-2">Employee Password:</label>
       <div class="col-xs-12 col-sm-5 col-md-5">
-        <input type="password" name="password" id="password" class="form-control"  data-ng-model="formData.password" placeholder="Employee Password:" ng-minlength="8" ng-maxlength="20" ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" required>
+        <input type="password" name="employeePassword" id="employeePassword" class="form-control"  data-ng-model="formData.employeePassword" placeholder="Employee Password:" ng-minlength="8" ng-maxlength="20" ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" required>
       </div>
-      <span class="col-xs-12 col-sm-4 col-md-5" ng-show="employeeForm.password.$error.required && employeeForm.password.$dirty">required</span>
-      <span class="col-xs-12 col-sm-4 col-md-5" ng-show="!employeeForm.password.$error.required && (employeeForm.password.$error.minlength || employeeForm.password.$error.maxlength) && employeeForm.password.$dirty">Passwords must be between 8 and 20 characters.</span>
-      <span class="col-xs-12 col-sm-4 col-md-5" ng-show="!employeeForm.password.$error.required && !employeeForm.password.$error.minlength && !employeeForm.password.$error.maxlength && employeeForm.password.$error.pattern && employeeForm.password.$dirty">Must contain one lower &amp; uppercase letter, and one non-alpha character (a number or a symbol.)</span>
+      <span class="col-xs-12 col-sm-4 col-md-5" ng-show="employeeForm.employeePassword.$error.required && employeeForm.employeePassword.$dirty">required</span>
+      <span class="col-xs-12 col-sm-4 col-md-5" ng-show="!employeeForm.employeePassword.$error.required && (employeeForm.employeePassword.$error.minlength || employeeForm.employeePassword.$error.maxlength) && employeeForm.employeePassword.$dirty">Passwords must be between 8 and 20 characters.</span>
+      <span class="col-xs-12 col-sm-4 col-md-5" ng-show="!employeeForm.employeePassword.$error.required && !employeeForm.employeePassword.$error.minlength && !employeeForm.employeePassword.$error.maxlength && employeeForm.employeePassword.$error.pattern && employeeForm.employeePassword.$dirty">Must contain one lower &amp; uppercase letter, and one non-alpha character (a number or a symbol.)</span>
     </div>
     <div class="form-group col-lg-12">
       <label for="employeeName" class="col-xs-12 col-sm-3 col-md-2">Employee Name:</label>
@@ -39,7 +39,6 @@
         <input type="text" name="employeeName" id="employeeName" class="form-control"  data-ng-model="formData.employeeName" placeholder="Employee Name" required>
       </div>
       <span class="col-xs-12 col-sm-4 col-md-5" ng-show="employeeForm.employeeName.$error.required && employeeForm.employeeName.$dirty">required</span>
-      <span class="col-xs-12 col-sm-4 col-md-5" ng-show="!employeeForm.employeeName.$error.required && employeeForm.employeeName.$error.text && employeeForm.employeeName.$dirty">Invalid Name</span>
     </div>
     <div class="form-group col-lg-12">
       <label for="employeeEmail" class="col-xs-12 col-sm-3 col-md-2">Employee Email:</label>
@@ -52,26 +51,21 @@
     <div class="form-group col-lg-12">
       <label for="company" class="col-xs-12 col-sm-3 col-md-2">Company Name:</label>
       <div class="col-xs-12 col-sm-5 col-md-5">
-        <select class="form-control" id="company" name="company" required>
-          <option value="" selected disabled>Select Company</option>
-          <option value="">I-tech Software Solution Pvt Ltd</option>
-          <option value="">Java R&D Labs</option>
-          <option value="">Shri Ganesh</option>
+        <select class="form-control" id="company" name="company" data-ng-options="company for company in companies"  data-ng-model="formData.selectedCompany" required>
+          <option style="display:none" value="">Select Country</option>
         </select>
       </div>
     </div>
     <div class="form-group col-lg-12">
       <label for="employeeRole" class="col-xs-12 col-sm-3 col-md-2">Role:</label>
       <div class="col-xs-12 col-sm-5 col-md-5">
-        <select class="form-control" id="employeeRole" name="employeeRole" required>
-          <option value="" selected disabled>Select Role</option>
-          <option value="">Admin</option>
-          <option value="">Employee</option>
+        <select class="form-control" id="employeeRole" name="employeeRole" data-ng-options="role for role in roles" data-ng-model="formData.selectedRole" required>
+          <option style="display:none" value="">Select Role</option>
         </select>
       </div>
     </div>
-    <div class="form-group col-lg-12">
-      <label for="department" class="col-xs-12 col-sm-3 col-md-2">Role:</label>
+    <!--<div class="form-group col-lg-12">
+      <label for="department" class="col-xs-12 col-sm-3 col-md-2">Department:</label>
       <div class="col-xs-12 col-sm-5 col-md-5">
         <select class="form-control" id="department" name="department" required>
           <option value="" selected disabled>Select Department</option>
@@ -79,9 +73,9 @@
           <option value="">Development</option>
         </select>
       </div>
-    </div>
+    </div>-->
     <div class="col-lg-12 col-lg-offset-2">
-      <button type="submit" class="btn btn-primary" data-ng-disabled="employeeForm.$invalid"> Create Employee </button>
+      <button type="submit" class="btn btn-primary" data-ng-disabled="employeeForm.$invalid", data-ng-click="createNewEmployee()"> Create Employee </button>
     </div>
   </form>
 </div>

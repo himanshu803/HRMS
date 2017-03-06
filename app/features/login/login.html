@@ -26,7 +26,6 @@
           <div class="form-group">
             <input type="text" name="userName" class="form-control input-underline input-lg" data-ng-model="formData.userName" id="userName" placeholder="User Name" required>
             <span ng-show="myForm.userName.$error.required && myForm.userName.$dirty">required</span>
-            <span ng-show="!myForm.userName.$error.required && myForm.userName.$error.email && myForm.userName.$dirty">invalid email</span>
           </div>
           <div class="form-group">
             <input type="password" class="form-control input-underline input-lg" id="password" placeholder="Password" name="password" data-ng-model="formData.password" ng-minlength="8" ng-maxlength="20" ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" required>

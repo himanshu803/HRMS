@@ -11,7 +11,7 @@ angular.module('myApp.admin.viewEmployee', ['ngRoute'])
 
   .controller('viewEmployeeCtrl',['$scope', function($scope) {
 
-       $scope.employees = [
+    $scope.employees = [
       {id: '182', name:'Sachin Bahety', email:'sachin@gmail.com', password:'Sachin@123', role:'Employee', company:'I-tech Software Solution Pvt Ltd'},
       {id: '124', name:'Vishal Thakur', email:'vishal@gmail.com', password:'Vishal@123', role:'Employee', company:'I-tech Software Solution Pvt Ltd'},
       {id: '174', name:'Shivani Sharan', email:'shivani@gmail.com', password:'Shivani@123', role:'Employee', company:'I-tech Software Solution Pvt Ltd'},
