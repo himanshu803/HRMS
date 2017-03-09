@@ -39,8 +39,7 @@ angular.module('myApp.employee.createId', ['ngRoute','ngFileUpload'])
 
     };
 
-
-
+    //ng-file-upload
     $scope.uploadPic = function(file) {
       file.upload = Upload.upload({
         url: 'https://angular-file-upload-cors-srv.appspot.com/upload',
@@ -73,24 +72,9 @@ angular.module('myApp.employee.createId', ['ngRoute','ngFileUpload'])
             scope.$apply(function () {
               scope.fileread = loadEvent.target.result;
             });
-          }
+          };
           reader.readAsDataURL(changeEvent.target.files[0]);
         });
       }
     }
-  }])
-
-  .directive('validFile',function(){
-    return {
-      require:'ngModel',
-      link:function(scope,el,attrs,ngModel){
-        //change event is fired when file is selected
-        el.bind('change',function(){
-          scope.$apply(function(){
-            ngModel.$setViewValue(el.val());
-            ngModel.$render();
-          });
-        });
-      }
-    }
-  });
+  }]);
