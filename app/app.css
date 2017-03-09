@@ -1,4 +1,6 @@
 @import "features/login/style/login.css";
+@import "features/employee/partials/createId/style/createId.css";
+@import "features/employee/style/employee.css";
 
 /* app css stylesheet */
 

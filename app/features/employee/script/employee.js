@@ -2,7 +2,8 @@
 
 angular.module('myApp.employee', [
   'ngRoute',
-  'myApp.employee.createId'
+  'myApp.employee.createId',
+  'myApp.employee.changePassword'
 ])
 
   .config(['$locationProvider','$routeProvider', function($locationProvider, $routeProvider) {

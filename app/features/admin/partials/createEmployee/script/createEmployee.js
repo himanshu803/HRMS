@@ -9,9 +9,15 @@ angular.module('myApp.admin.createEmployee', ['ngRoute'])
     });
   }])
 
-  .controller('createEmployeeCtrl', ['$rootScope','$scope','$location','createEmployeeService', function($rootScope, $scope, $location, createEmployeeService) {
+  .controller('createEmployeeCtrl', ['$rootScope','$scope','createEmployeeService', function($rootScope, $scope, createEmployeeService) {
      $scope.companies = ["I-tech Software Solution Pvt Ltd", "Java R&D Labs", "Shri Ganesh"];
      $scope.roles =["Admin", "Employee"];
+
+     $scope.resetForm = {};
+
+     $scope.reset = function () {
+       $scope.formData = angular.copy($scope.resetForm);
+     }
 
      $scope.formData = {
        employeeId : "",
@@ -36,7 +42,7 @@ angular.module('myApp.admin.createEmployee', ['ngRoute'])
         $rootScope.returnData = response.data;
         if (response.data.message == "Registered Successfully! ") {
           alert("Employee Registered Successfully");
-          $scope.formData.reset();
+          $scope.reset();
         } else {
           alert("Employee already registered");
           return false;
@@ -49,8 +55,8 @@ angular.module('myApp.admin.createEmployee', ['ngRoute'])
     var _this = this;
 
     _this.createNewEmployee = function (data) {
-      return $http.post('http://itech-pc:8080/HRMS/hrms_REST/register', data)
+      return $http.post('http://itech-pc:8080/HRMS/hrms_REST/createNewEmployee', data)
     };
 
     return _this;
-  }])
+  }]);
