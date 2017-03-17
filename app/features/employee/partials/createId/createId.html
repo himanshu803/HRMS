@@ -6,6 +6,9 @@
     <ul class="nav navbar-nav">
       <li><a href="#/employee/createId">Create ID Card</a></li>
     </ul>
+    <ul class="nav navbar-nav">
+      <li><a href="#/employee/leaves">Leaves</a></li>
+    </ul>
     <ul class="nav navbar-nav navbar-right">
       <div class="dropdown">
         <span class="glyphicon glyphicon-menu-hamburger dropdown-toggle" data-toggle="dropdown"></span>
@@ -20,6 +23,14 @@
 <br><br>
 <div class="container" data-ng-controller="createIdCtrl">
   <form action="" role="form" name="employeeIdForm">
+    <div class="form-group col-lg-12">
+      <label for="employeeId" class="col-xs-12 col-sm-3 col-md-2">Employee ID:</label>
+      <div class="col-xs-12 col-sm-5 col-md-5">
+        <input type="text" name="employeeId" id="employeeId" class="form-control"  data-ng-model="formData.employeeId" placeholder="Employee ID" required>
+      </div>
+      <span class="col-xs-12 col-sm-4 col-md-5" ng-show="employeeIdForm.employeeId.$error.required && employeeIdForm.employeeId.$dirty">required</span>
+      <span class="col-xs-12 col-sm-4 col-md-5" ng-show="!employeeIdForm.employeeId.$error.required && employeeIdForm.employeeId.$error.text && employeeIdForm.employeeId.$dirty">Invalid ID</span>
+    </div>
     <div class="form-group col-lg-12">
       <label for="employeeName" class="col-xs-12 col-sm-3 col-md-2">Employee Name:</label>
       <div class="col-xs-12 col-sm-5 col-md-5">
@@ -42,12 +53,20 @@
       <span class="col-xs-12 col-sm-4 col-md-5" ng-show="employeeIdForm.dateOfJoin.$error.required && employeeIdForm.dateOfBirth.$error.date">Date of join required</span>
     </div>
     <div class="form-group col-lg-12">
-      <label for="employeeEmail" class="col-xs-12 col-sm-3 col-md-2">Email:</label>
+      <label for="employeeOfficialEmail" class="col-xs-12 col-sm-3 col-md-2">Official Email:</label>
       <div class="col-xs-12 col-sm-5 col-md-5">
-        <input type="email" name="employeeEmail" id="employeeEmail" class="form-control"  data-ng-model="formData.employeeEmail" placeholder="Email" required>
+        <input type="email" name="employeeOfficialEmail" id="employeeOfficialEmail" class="form-control"  data-ng-model="formData.employeeOfficialEmail" placeholder="Email" required>
       </div>
-      <span class="col-xs-12 col-sm-4 col-md-5" ng-show="employeeIdForm.employeeEmail.$error.required && employeeIdForm.employeeEmail.$dirty">required</span>
-      <span class="col-xs-12 col-sm-4 col-md-5" ng-show="!employeeIdForm.employeeEmail.$error.required && employeeIdForm.employeeEmail.$error.email && employeeIdForm.employeeEmail.$dirty">Invalid Email</span>
+      <span class="col-xs-12 col-sm-4 col-md-5" ng-show="employeeIdForm.employeeOfficialEmail.$error.required && employeeIdForm.employeeOfficialEmail.$dirty">required</span>
+      <span class="col-xs-12 col-sm-4 col-md-5" ng-show="!employeeIdForm.employeeOfficialEmail.$error.required && employeeIdForm.employeeOfficialEmail.$error.email && employeeIdForm.employeeOfficialEmail.$dirty">Invalid Official Email</span>
+    </div>
+    <div class="form-group col-lg-12">
+      <label for="employeePersonalEmail" class="col-xs-12 col-sm-3 col-md-2">Pesonal Email:</label>
+      <div class="col-xs-12 col-sm-5 col-md-5">
+        <input type="email" name="employeePersonalEmail" id="employeePersonalEmail" class="form-control"  data-ng-model="formData.employeePersonalEmail" placeholder="Email" required>
+      </div>
+      <span class="col-xs-12 col-sm-4 col-md-5" ng-show="employeeIdForm.employeePersonalEmail.$error.required && employeeIdForm.employeePersonalEmail.$dirty">required</span>
+      <span class="col-xs-12 col-sm-4 col-md-5" ng-show="!employeeIdForm.employeePersonalEmail.$error.required && employeeIdForm.employeePersonalEmail.$error.email && employeeIdForm.employeePersonalEmail.$dirty">Invalid Personal Email</span>
     </div>
     <div class="form-group col-lg-12">
       <label for="currentAddress" class="col-xs-12 col-sm-3 col-md-2">Current Address:</label>
@@ -94,35 +113,49 @@
       <span class="col-xs-12 col-sm-4 col-md-5" ng-show="employeeIdForm.emergencyNum.$error.required && employeeIdForm.emergencyNum.$dirty">Emergency contact number required</span>
     </div>
     <div class="form-group col-lg-12">
-      <label for="employeeImage" class="col-xs-12 col-sm-3 col-md-2">Upload Picture:</label>
+      <label for="workingStatus" class="col-xs-12 col-sm-3 col-md-2">Working Status:</label>
       <div class="col-xs-12 col-sm-5 col-md-5">
-        <input type="file" id="employeeImage" fileread="formData.uploadImage" ngf-select ng-model="picFile" name="file" accept="image/*" ngf-max-size="0.02MB" required ngf-model-invalid="errorFile">
+        <select class="form-control" id="workingStatus" name="workingStatus" data-ng-options="workingStatus for workingStatus in workStatus"  data-ng-model="formData.selectedStatus" required>
+          <option style="display:none" value="">Select Status</option>
+        </select>
       </div>
-      <i class="col-xs-12 col-sm-4 col-md-5" ng-show="employeeIdForm.file.$error.required">*required</i><br>
-      <i class="col-xs-12 col-sm-4 col-md-5" ng-show="employeeIdForm.file.$error.maxSize">File too large{{errorFile.size / 1000000|number:1}}MB: max 2M</i>
-      <img ng-show="employeeIdForm.file.$valid" ngf-thumbnail="picFile" class="thumb"> <button ng-click="picFile = null" ng-show="picFile">Remove</button>
     </div>
  </form>
+  <form name="imageForm">
+    <div class="form-group col-lg-12">
+      <label for="employeeImage" class="col-xs-12 col-sm-3 col-md-2">Upload Picture:</label>
+      <div class="col-xs-12 col-sm-5 col-md-5">
+        <input type="file" id="employeeImage" ngf-select ng-model="picFile" name="file" accept="image/*" ngf-max-size="2MB" required ngf-model-invalid="errorFile">
+      </div>
+      <i class="col-xs-12 col-sm-4 col-md-5" ng-show="imageForm.file.$error.required">*required</i><br>
+      <i class="col-xs-12 col-sm-4 col-md-5" ng-show="imageForm.file.$error.maxSize">File too large{{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+      <div class="col-xs-12 col-sm-4 col-md-12 col-md-offset-2">
+        <img ng-show="imageForm.file.$valid" ngf-thumbnail="picFile" class="thumb"> <button ng-click="picFile = null" ng-show="picFile">Remove</button>
+        <button ng-disabled="!imageForm.file.$valid" ng-click="uploadPic(picFile)">Submit</button>
+        <span class="progress" ng-show="picFile.progress >= 0">
+          <div style="width:{{picFile.progress}}%"
+               ng-bind="picFile.progress + '%'"></div>
+        </span>
+        <span ng-show="picFile.result">Upload Successful</span>
+        <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+      </div>
+    </div>
+  </form>
   <div class="col-lg-12 col-lg-offset-2">
     <button type="submit" class="btn btn-primary" data-ng-disabled="employeeIdForm.$invalid" data-ng-click="createId()"> Create Employee </button>
   </div>
 </div>
 
-<!--<form name="imageForm">
-  <div class="form-group col-lg-12">
-    <label for="employeeImage" class="col-xs-12 col-sm-3 col-md-2">Upload Picture:</label>
-    <div class="col-xs-12 col-sm-5 col-md-5">
-      <input type="file" id="employeeImage" ngf-select ng-model="picFile" name="file" accept="image/*" ngf-max-size="2MB" required ngf-model-invalid="errorFile">
-    </div>
-    <i class="col-xs-12 col-sm-4 col-md-5" ng-show="imageForm.file.$error.required">*required</i><br>
-    <i class="col-xs-12 col-sm-4 col-md-5" ng-show="imageForm.file.$error.maxSize">File too large{{errorFile.size / 1000000|number:1}}MB: max 2M</i>
-    <img ng-show="imageForm.file.$valid" ngf-thumbnail="picFile" class="thumb"> <button ng-click="picFile = null" ng-show="picFile">Remove</button>
-    <button ng-disabled="!imageForm.file.$valid" ng-click="uploadPic(picFile)">Submit</button>
-    <span class="progress" ng-show="picFile.progress >= 0">
-        <div style="width:{{picFile.progress}}%"
-             ng-bind="picFile.progress + '%'"></div>
-      </span>
-    <span ng-show="picFile.result">Upload Successful</span>
-    <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+<!---->
+<!--
+<div class="form-group col-lg-12">
+  <label for="employeeImage" class="col-xs-12 col-sm-3 col-md-2">Upload Picture:</label>
+  <div class="col-xs-12 col-sm-5 col-md-5">
+    <input type="file" id="employeeImage" ngf-select ng-model="formData.uploadImage" name="file" accept="image/*" ngf-max-size="0.02MB" required ngf-model-invalid="errorFile">
   </div>
-  </form>-->
+  <i class="col-xs-12 col-sm-4 col-md-5" ng-show="employeeIdForm.file.$error.required">*required</i><br>
+  <i class="col-xs-12 col-sm-4 col-md-5" ng-show="employeeIdForm.file.$error.maxSize">File too large{{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+  <div class="col-xs-12 col-sm-4 col-md-12 col-md-offset-2">
+    <img ng-show="employeeIdForm.file.$valid" ngf-thumbnail="formData.uploadImage" class="thumb"> <button ng-click="formData.uploadImage = null" ng-show="formData.uploadImage">Remove</button>
+  </div>
+</div>-->

@@ -9,41 +9,54 @@ angular.module('myApp.employee.createId', ['ngRoute','ngFileUpload'])
     });
   }])
 
-  .controller('createIdCtrl', ['$scope', 'Upload', '$timeout', function ($scope, Upload, $timeout) {
+  .controller('createIdCtrl', ['$rootScope','$scope', 'Upload', '$timeout','creteIdService', function ($rootScope,$scope, Upload, $timeout, creteIdService) {
+    $scope.workStatus =["Active", "Inactive"];
+
     $scope.formData = {
+      employeeId : "",
       employeeName : "",
       dateOfBirth : "",
       dateOfJoin : "",
-      employeeEmail : "",
+      employeeOfficialEmail : "",
+      employeePersonalEmail : "",
       currentAddress : "",
+      permanentAddress : "",
       designation : "",
       bloodGroup : "",
       contactNum : "",
       emergencyNum: "",
-      uploadImage: ""
+      selectedStatus:''
     };
 
     $scope.createId = function () {
       var idData = {
-        "name" : $scope.formData.employeeName,
-        "dateOfBirth" : $scope.formData.dateOfBirth,
-        "dateOfJoin" : $scope.formData.dateOfBirth,
-        "email" : $scope.formData.employeeEmail,
-        "currentAddress" : $scope.formData.currentAddress,
-        "designation" : $scope.formData.designation,
-        "bloodGroup" : $scope.formData.bloodGroup,
-        "contactNum" : $scope.formData.contactNum,
-        "emergencyNum": $scope.formData.currentAddress,
-        "uploadImage": $scope.formData.uploadImage
-      }
+        "emp_id" : $scope.formData.employeeId,
+        "emp_name" : $scope.formData.employeeName,
+        "emp_dob" : $scope.formData.dateOfBirth,
+        "emp_date_of_joining" : $scope.formData.dateOfJoin,
+        "emp_official_email_id" : $scope.formData.employeeOfficialEmail,
+        "emp_personal_email_id" : $scope.formData.employeePersonalEmail,
+        "emp_current_address" : $scope.formData.currentAddress,
+        "emp_permanent_address" : $scope.formData.permanentAddress,
+        "emp_designation" : $scope.formData.designation,
+        "emp_blood_group" : $scope.formData.bloodGroup,
+        "emp_mobile_no" : $scope.formData.contactNum,
+        "emp_emergency_contact_no": $scope.formData.emergencyNum,
+        "emp_working_status" : $scope.formData.selectedStatus
+      };
+
+      creteIdService.createId(idData).then(function (response) {
+        $rootScope.returnData = response.data;
+        alert(response.data.message);
+      })
 
     };
 
     //ng-file-upload
     $scope.uploadPic = function(file) {
       file.upload = Upload.upload({
-        url: 'https://angular-file-upload-cors-srv.appspot.com/upload',
-        data: {username: $scope.username, file: file},
+        url: 'http://itech-pc:8080/HRMS/hrms_REST/submitIDFormImage',
+        data: {'emp_id': $scope.formData.employeeId, file: file}
       });
 
       file.upload.then(function (response) {
@@ -60,7 +73,24 @@ angular.module('myApp.employee.createId', ['ngRoute','ngFileUpload'])
     }
   }])
 
-  .directive("fileread", [function () {
+  /*.directive("fileModel",function() {
+    return {
+      restrict: 'EA',
+      scope: {
+        setFileData: "&"
+      },
+      link: function(scope, ele, attrs) {
+        ele.on('change', function() {
+          scope.$apply(function() {
+            var val = ele[0].files[0];
+            scope.setFileData({ value: val });
+          });
+        });
+      }
+    }
+  })*/
+
+  /*.directive("fileread", [function () {
     return {
       scope: {
         fileread: "="
@@ -77,4 +107,14 @@ angular.module('myApp.employee.createId', ['ngRoute','ngFileUpload'])
         });
       }
     }
+  }])*/
+
+  .service('creteIdService',['$http',function ($http) {
+    var _this = this;
+
+    _this.createId = function (data) {
+      return $http.post("http://itech-pc:8080/HRMS/hrms_REST/submitIDForm", data);
+    };
+
+    return _this;
   }]);

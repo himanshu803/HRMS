@@ -1,0 +1,83 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#/employee">Employee Home</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="#/employee/createId">Create ID Card</a></li>
+    </ul>
+    <ul class="nav navbar-nav">
+      <li><a href="#/employee/leaves">Leaves</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <div class="dropdown">
+        <span class="glyphicon glyphicon-menu-hamburger dropdown-toggle" data-toggle="dropdown"></span>
+        <ul class="dropdown-menu">
+          <li><a href="#/employee/changePassword">Change Password</a></li>
+          <li><a href="#/home"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
+      </div>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <ul class="nav nav-pills">
+    <li class="active"><a data-toggle="pill" target="_self" href="#applyForLeaves">Apply Leaves</a></li>
+    <li><a data-toggle="pill" target="_self" href="#leavesSummary">Leaves Summary</a></li>
+  </ul>
+  <br><br>
+  <div class="tab-content" ng-controller="leavesCtrl">
+    <div id="applyForLeaves" class="tab-pane fade in active">
+      <div class="form-group col-lg-12">
+        <label class="col-xs-12 col-sm-3 col-md-2">Full Day Leave:</label>
+        <div class="col-md-5">
+          <div class="col-md-10">
+            <p class="input-group">
+              <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="startDate" is-open="startDateOpened" min-date="minDate" max-date="{{maxDate}}" datepicker-options="dateOptions" ng-required="true" close-text="Close" placeholder="From"/>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="startDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+          </div>
+          <div class="col-md-1">
+            <button type="button" class="btn btn-sm btn-danger" ng-click="startDateClear()">Clear</button>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="col-md-10">
+            <p class="input-group">
+              <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="endDate" is-open="endDateOpened" min-date="minDate" max-date="{{maxDate}}" datepicker-options="dateOptions" ng-required="true" close-text="Close" placeholder="To"/>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="endDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+          </div>
+          <div class="col-md-1">
+            <button type="button" class="btn btn-sm btn-danger" ng-click="endDateClear()">Clear</button>
+          </div>
+        </div>
+        <hr />
+
+        <div class="row">
+          <div class="col-md-6">
+            <pre>Start Date: <em>{{startDate | date:'fullDate' }}</em></pre>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <pre>End Date: <em>{{endDate | date:'fullDate' }}</em></pre>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <pre>Duration: <em>{{getDuration(startDate, endDate)}}</em></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="leavesSummary" class="tab-pane fade">
+      <h3>Menu 1</h3>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+  </div>
+</div>
