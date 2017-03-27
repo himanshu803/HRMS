@@ -7,7 +7,7 @@
       <li><a href="#/employee/createId">Create ID Card</a></li>
     </ul>
     <ul class="nav navbar-nav">
-      <li><a href="#/employee/leaves">Leaves</a></li>
+      <li><a href="#/employee/leaves">Manage Leaves</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <div class="dropdown">
@@ -29,7 +29,7 @@
   <div class="tab-content" ng-controller="leavesCtrl">
     <div id="applyForLeaves" class="tab-pane fade in active">
       <div class="form-group col-lg-12">
-        <label class="col-xs-12 col-sm-3 col-md-2">Full Day Leave:</label>
+        <label class="col-xs-12 col-sm-3 col-md-1">Full Day:</label>
         <div class="col-md-5">
           <div class="col-md-10">
             <p class="input-group">
@@ -56,28 +56,129 @@
             <button type="button" class="btn btn-sm btn-danger" ng-click="endDateClear()">Clear</button>
           </div>
         </div>
-        <hr />
-
-        <div class="row">
-          <div class="col-md-6">
-            <pre>Start Date: <em>{{startDate | date:'fullDate' }}</em></pre>
+        <div class="col-md-1">
+          <button class="btn btn-sm btn-primary" ng-click="addAnotherFullLeave()">+</button>
+        </div>
+      </div>
+      <div class="form-group col-lg-12 col-lg-offset-1" data-ng-repeat="fullDay in fullDays">
+        <div class="col-md-5">
+          <div class="col-md-10">
+            <p class="input-group">
+              <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="fullDay.startDate" is-open="fullDay.isOpen" min-date="minDate" max-date="{{maxDate}}" datepicker-options="dateOptions" ng-required="true" close-text="Close" placeholder="From"/>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="fullDateOpenForLoopFun($event, fullDay)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+          </div>
+          <div class="col-md-1">
+            <button type="button" class="btn btn-sm btn-danger" ng-click="startDateClear()">Clear</button>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-6">
-            <pre>End Date: <em>{{endDate | date:'fullDate' }}</em></pre>
+        <div class="col-md-5">
+          <div class="col-md-10">
+            <p class="input-group">
+              <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="fullDay.endDate" is-open="fullDay.isOpen" min-date="minDate" max-date="{{maxDate}}" datepicker-options="dateOptions" ng-required="true" close-text="Close" placeholder="To"/>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="fullDateOpenForLoopFun($event, fullDay)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+          </div>
+          <div class="col-md-1">
+            <button type="button" class="btn btn-sm btn-danger" ng-click="endDateClear()">Clear</button>
           </div>
         </div>
-        <div class="row">
+        <div class="col-md-2">
+          <button class="btn btn-sm btn-danger" ng-click="removedAnotherFullLeave($index)">-</button>
+        </div>
+      </div>
+      <div class="col-md-12 col-md-offset-1">
+        <div class="col-md-5">
+          <pre>From: <em>{{startDate | date:'fullDate' }}</em></pre>
+        </div>
+        <div class="col-md-5">
+          <pre>To: <em>{{endDate | date:'fullDate' }}</em></pre>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <br>
+        <label class="col-xs-12 col-sm-3 col-md-1">Half Day:</label>
+        <div class="col-md-8">
           <div class="col-md-6">
-            <pre>Duration: <em>{{getDuration(startDate, endDate)}}</em></pre>
+            <div class="input-group">
+              <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="halfDate" is-open="halfDateOpened" min-date="minDate" max-date="{{maxDate}}" datepicker-options="dateOptions" ng-required="true" close-text="Close" placeholder="Date" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="halfDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </div>
+          </div>
+          <!--<div class="col-md-2 col-md-offset-2">
+            <button type="button" class="btn btn-sm btn-danger" ng-click="halfDateClear()" style="margin-left:-120px;">Clear</button>
+          </div>-->
+          <div class="col-md-1">
+            <button class="btn btn-sm btn-primary" ng-click="addAnotherHalfLeave()">+</button>
           </div>
         </div>
       </div>
+      <div class="col-md-12">
+        <div class="col-md-8 col-md-offset-1" ng-repeat="halfDay in halfDays">
+          <div class="col-md-6" >
+            <div class="input-group">
+              <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="halfDay.date" is-open="halfDay.isOpen" min-date="minDate" max-date="{{maxDate}}" datepicker-options="dateOptions" ng-required="true" close-text="Close" placeholder="Date" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="halfDateOpenForLoopFun($event, halfDay)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-sm btn-danger" ng-click="removedAnotherHalfLeave($index)">-</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <br>
+        <label for="description" class="col-xs-12 col-sm-3 col-md-1">Description:</label>
+        <div class="col-md-11">
+          <div class="input-group">
+            <textarea class="form-control" name="description" id="description" data-ng-model="description" cols="120" rows="5"></textarea>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-12 col-md-offset-1">
+        <br>
+        <div class="col-md-5" >
+          <pre><b>Total Applied Leaves:</b> <em>{{getDuration(startDate, endDate)}}</em></pre>
+        </div>
+      </div>
+      <div class="col-md-12 col-md-offset-5">
+        <br>
+        <button class="btn btn-success" ng-click="applyLeave()">Submit</button>
+      </div>
     </div>
+
     <div id="leavesSummary" class="tab-pane fade">
-      <h3>Menu 1</h3>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>S. No.</th>
+            <th>Full Day</th>
+            <th>Half Day</th>
+            <th>Number of leaves</th>
+            <th>Description</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="leave in leaveSummary">
+            <td>{{$index+1}}</td>
+            <td>{{leave.date}}</td>
+            <td>{{leave.halfDays}}</td>
+            <td>{{leave.totalLeave}}</td>
+            <td>{{leave.description}}</td>
+            <td>{{leave.status}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

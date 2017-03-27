@@ -42,7 +42,7 @@ angular.module('myApp.login', ['ngRoute'])
   var _this = this;
 
   _this.doLogin = function (data) {
-     return $http.post('http://itech-pc:8080/HRMS/hrms_REST/login', data)
+     return $http.post('http://192.168.1.120:8080/hrms/hrms_REST/login', data)
   };
 
   return _this;
