@@ -30,7 +30,7 @@ angular.module('myApp.employee.leaves', ['ngRoute','ui.bootstrap', 'angularMomen
     $scope.addAnotherFullLeave = function () {
       var startFullDay = angular.copy($scope.fullStartDate);
       var endFullDay = angular.copy($scope.fullEndDate);
-      $scope.fullDays.push({'startDate': startFullDay, 'endDate': endFullDay, 'isOpen':false});
+      $scope.fullDays.push({'startDate': startFullDay, 'endDate': endFullDay, 'openFrom':false, 'openTo':true});
       $scope.fullDate = null;
     };
 
@@ -46,9 +46,9 @@ angular.module('myApp.employee.leaves', ['ngRoute','ui.bootstrap', 'angularMomen
       $event.preventDefault();
       $event.stopPropagation();
 
-      fullDay.isOpen = !fullDay.isOpen;
+      fullDay.openFrom = !fullDay.openFrom;
+      fullDay.openTo = !fullDay.openTo;
     };
-
 
     //Half Day
     $scope.halfDays = [];
@@ -104,8 +104,6 @@ angular.module('myApp.employee.leaves', ['ngRoute','ui.bootstrap', 'angularMomen
     $scope.format = $scope.formats[2];
 
     // duration
-
-
     $scope.getDuration = function(start, end) {
       var startDate = moment.utc(start, 'dd.MM.yyyy').local().format('d-MM-YYYY');
       var endDate = moment.utc(end, 'dd.MM.yyyy').local().format('d-MM-YYYY');
@@ -130,7 +128,10 @@ angular.module('myApp.employee.leaves', ['ngRoute','ui.bootstrap', 'angularMomen
 
 
 
-    $scope.leaveSummary = [];
+    $scope.leaveSummary = [
+      {date: "10th March 2017 to 20th March 2017", totalLeave: "10.5 Days", halfDays: "21st March 2017", description: "Brother's marriage", status: "pending"},
+      {date: "5th Feb 2017 to 11th Feb 2017", totalLeave: "6 Days", halfDays: "12th Feb 2017, 6th Feb 2017", description: "Health Issue", status: "Approved"}
+      ];
 
     $scope.applyLeave = function () {
       $scope.halfDates = [];
@@ -138,12 +139,12 @@ angular.module('myApp.employee.leaves', ['ngRoute','ui.bootstrap', 'angularMomen
       $scope.halfDays.forEach(function(days) {
         //get the value of name
         var val = days.date;
-        var halfDateFormat = moment.utc(val, 'dd.MM.yyyy').local().format('MMMM Do YYYY');
+        var halfDateFormat = moment.utc(val, 'dd.MM.yyyy').local().format('Do MMMM YYYY');
         //push the name string in the array
         $scope.halfDates.push(halfDateFormat);
       });
-      var startDate = moment.utc($scope.startDate, 'dd.MM.yyyy').local().format('MMMM Do YYYY');
-      var endDate = moment.utc($scope.endDate, 'dd.MM.yyyy').local().format('MMMM Do YYYY');
+      var startDate = moment.utc($scope.startDate, 'dd.MM.yyyy').local().format('Do MMMM YYYY');
+      var endDate = moment.utc($scope.endDate, 'dd.MM.yyyy').local().format('Do MMMM YYYY');
       var duration  =  $scope.getDuration($scope.startDate, $scope.endDate);
       var leaveData = {
         "date": startDate +" to "+ endDate,
@@ -151,9 +152,10 @@ angular.module('myApp.employee.leaves', ['ngRoute','ui.bootstrap', 'angularMomen
         "halfDays": $scope.halfDates.toString(),
         "description": $scope.description,
         "status": "pending"
-      }
+      };
 
       $scope.leaveSummary.push(leaveData);
+      alert("Leave applied successfully");
     }
   }]);
 

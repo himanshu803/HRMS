@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.employee.createId', ['ngRoute','ngFileUpload'])
+angular.module('myApp.employee.createId', ['ngRoute','ngFileUpload', 'angularMoment'])
 
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/employee/createId', {
@@ -28,12 +28,16 @@ angular.module('myApp.employee.createId', ['ngRoute','ngFileUpload'])
       selectedStatus:''
     };
 
+
+
     $scope.createId = function () {
+      var dateOfBirth = moment.utc($scope.formData.dateOfBirth, 'dd.MM.yyyy').local().format('YYYY-MM-DD');
+      var dateOfJoin = moment.utc($scope.formData.dateOfJoin, 'dd.MM.yyyy').local().format('YYYY-MM-DD');
       var idData = {
         "emp_id" : $scope.formData.employeeId,
         "emp_name" : $scope.formData.employeeName,
-        "emp_dob" : $scope.formData.dateOfBirth,
-        "emp_date_of_joining" : $scope.formData.dateOfJoin,
+        "emp_dob" : dateOfBirth,
+        "emp_date_of_joining" : dateOfJoin,
         "emp_official_email_id" : $scope.formData.employeeOfficialEmail,
         "emp_personal_email_id" : $scope.formData.employeePersonalEmail,
         "emp_current_address" : $scope.formData.currentAddress,
@@ -55,7 +59,7 @@ angular.module('myApp.employee.createId', ['ngRoute','ngFileUpload'])
     //ng-file-upload
     $scope.uploadPic = function(file) {
       file.upload = Upload.upload({
-        url: 'http://192.168.1.120:8080/hrms/hrms_REST/submitIDFormImage',
+        url: 'http://192.168.1.127:8080/hrms/hrms_REST/doUpload',
         data: {'emp_id': $scope.formData.employeeId, file: file}
       });
 
@@ -113,7 +117,7 @@ angular.module('myApp.employee.createId', ['ngRoute','ngFileUpload'])
     var _this = this;
 
     _this.createId = function (data) {
-      return $http.post("http://192.168.1.120:8080/hrms/hrms_REST/submitIDForm", data);
+      return $http.post("http://192.168.1.127:8080/hrms/hrms_REST/submitIDForm", data);
     };
 
     return _this;
