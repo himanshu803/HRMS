@@ -1,15 +1,17 @@
 'use strict';
 
-angular.module('myApp.employee.changePassword', ['ngRoute'])
+angular.module('myApp.employee.changePassword', ['ngRoute', 'angular-growl'])
 
-  .config(['$routeProvider', function($routeProvider) {
+  .config(['$routeProvider','growlProvider', function($routeProvider, growlProvider) {
     $routeProvider.when('/employee/changePassword', {
       templateUrl: 'features/employee/partials/changePassword/changePassword.html',
       controller: 'changePasswordCtrl'
     });
+    growlProvider.globalTimeToLive(10000);
+    growlProvider.onlyUniqueMessages(false);
   }])
 
-  .controller('changePasswordCtrl', ['$rootScope','$scope','$http', function ($scope, $rootScope, $http) {
+  .controller('changePasswordCtrl', ['$rootScope','$scope','$http','growl', function ($scope, $rootScope, $http, growl) {
     $scope.formData = {
       employeeId: "",
       employeeOldPassword: "",
@@ -23,12 +25,10 @@ angular.module('myApp.employee.changePassword', ['ngRoute'])
         "newPassword": $scope.formData.employeeNewPassword
       };
 
-      $http.get("http://192.168.1.127:8080/hrms/hrms_REST/changePassword/?id="+changePasswordData.id+"&oldPassword="+changePasswordData.oldPassword+"&newPassword="+changePasswordData.newPassword+"")
+      $http.get("http://192.168.1.105:8080/hrms/hrms_REST/changePassword/?id="+changePasswordData.id+"&oldPassword="+changePasswordData.oldPassword+"&newPassword="+changePasswordData.newPassword+"")
         .then(function(response) {
           $rootScope.returnData = response.data;
-          $scope.responseMessage = response.data.message;
-          alert(response.data.message);
-
+          growl.success(response.data.message, {title: "Success!"});
         });
     }
 

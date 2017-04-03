@@ -9,6 +9,13 @@ angular.module('myApp.employee', [
 
   .config(['$locationProvider','$routeProvider', function($locationProvider, $routeProvider) {
     $routeProvider.when('/employee', {
+      resolve: {
+        "check": function ($location, $rootScope) {
+          if(!$rootScope.loggedIn) {
+             $location.path('/');
+          }
+        }
+      },
       templateUrl: 'features/employee/employee.html',
       controller: 'employeeCtrl'
     });

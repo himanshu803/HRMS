@@ -15,6 +15,7 @@
 </nav>
 </nav><br><br>
 <div class="container" data-ng-controller="createEmployeeCtrl">
+  <div growl></div>
   <form action="" role="form" name="employeeForm">
     <div class="form-group col-lg-12">
       <label for="employeeId" class="col-xs-12 col-sm-3 col-md-2">Employee ID:</label>
@@ -52,7 +53,7 @@
       <label for="company" class="col-xs-12 col-sm-3 col-md-2">Company Name:</label>
       <div class="col-xs-12 col-sm-5 col-md-5">
         <select class="form-control" id="company" name="company" data-ng-options="company for company in companies"  data-ng-model="formData.selectedCompany" required>
-          <option style="display:none" value="">Select Country</option>
+          <option style="display:none" value="">Select Company</option>
         </select>
       </div>
     </div>

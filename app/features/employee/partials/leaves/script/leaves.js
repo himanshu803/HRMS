@@ -1,15 +1,17 @@
 'use strict';
 
-angular.module('myApp.employee.leaves', ['ngRoute','ui.bootstrap', 'angularMoment'])
+angular.module('myApp.employee.leaves', ['ngRoute','ui.bootstrap', 'angularMoment', 'angular-growl'])
 
-  .config(['$routeProvider', function($routeProvider) {
+  .config(['$routeProvider','growlProvider', function($routeProvider, growlProvider) {
     $routeProvider.when('/employee/leaves', {
       templateUrl: 'features/employee/partials/leaves/leaves.html',
       controller: 'leavesCtrl'
     });
+    growlProvider.globalTimeToLive(2000);
+    growlProvider.onlyUniqueMessages(false);
   }])
 
-  .controller('leavesCtrl', ['$scope', function ($scope) {
+  .controller('leavesCtrl', ['$scope','growl', function ($scope, growl) {
     $scope.maxDate = new moment().add(100, 'y');
 
     // start date
@@ -155,7 +157,8 @@ angular.module('myApp.employee.leaves', ['ngRoute','ui.bootstrap', 'angularMomen
       };
 
       $scope.leaveSummary.push(leaveData);
-      alert("Leave applied successfully");
+      growl.success("<strong style='color:#7314bf'>Leave applied</strong><h1 style='color:#06682c'>Successfully</h1>", {title: "Success!"});
+      /*alert("Leave applied successfully");*/
     }
   }]);
 

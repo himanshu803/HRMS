@@ -1,16 +1,24 @@
 'use strict';
 
-angular.module('myApp.employee.createId', ['ngRoute','ngFileUpload', 'angularMoment'])
+angular.module('myApp.employee.createId', ['ngRoute','ngFileUpload', 'angularMoment', 'angular-growl'])
 
-  .config(['$routeProvider', function($routeProvider) {
+  .config(['$routeProvider','growlProvider', function($routeProvider, growlProvider ) {
     $routeProvider.when('/employee/createId', {
       templateUrl: 'features/employee/partials/createId/createId.html',
       controller: 'createIdCtrl'
     });
+    growlProvider.globalTimeToLive(2000);
+    growlProvider.onlyUniqueMessages(false);
   }])
 
-  .controller('createIdCtrl', ['$rootScope','$scope', 'Upload', '$timeout','creteIdService', function ($rootScope,$scope, Upload, $timeout, creteIdService) {
+  .controller('createIdCtrl', ['$rootScope','$scope', 'Upload', '$timeout','creteIdService','growl', function ($rootScope,$scope, Upload, $timeout, creteIdService, growl) {
     $scope.workStatus =["Active", "Inactive"];
+
+    $scope.resetForm = {};
+
+    $scope.reset = function () {
+      $scope.formData = angular.copy($scope.resetForm);
+    };
 
     $scope.formData = {
       employeeId : "",
@@ -27,8 +35,6 @@ angular.module('myApp.employee.createId', ['ngRoute','ngFileUpload', 'angularMom
       emergencyNum: "",
       selectedStatus:''
     };
-
-
 
     $scope.createId = function () {
       var dateOfBirth = moment.utc($scope.formData.dateOfBirth, 'dd.MM.yyyy').local().format('YYYY-MM-DD');
@@ -51,7 +57,8 @@ angular.module('myApp.employee.createId', ['ngRoute','ngFileUpload', 'angularMom
 
       creteIdService.createId(idData).then(function (response) {
         $rootScope.returnData = response.data;
-        alert(response.data.message);
+        $scope.reset();
+        growl.success(response.data.message, {title: "Success!"});
       })
 
     };
@@ -59,7 +66,7 @@ angular.module('myApp.employee.createId', ['ngRoute','ngFileUpload', 'angularMom
     //ng-file-upload
     $scope.uploadPic = function(file) {
       file.upload = Upload.upload({
-        url: 'http://192.168.1.127:8080/hrms/hrms_REST/doUpload',
+        url: 'http://192.168.1.105:8080/hrms/hrms_REST/submitIDFormImage',
         data: {'emp_id': $scope.formData.employeeId, file: file}
       });
 
@@ -117,7 +124,7 @@ angular.module('myApp.employee.createId', ['ngRoute','ngFileUpload', 'angularMom
     var _this = this;
 
     _this.createId = function (data) {
-      return $http.post("http://192.168.1.127:8080/hrms/hrms_REST/submitIDForm", data);
+      return $http.post("http://192.168.1.105:8080/hrms/hrms_REST/submitIDForm", data);
     };
 
     return _this;

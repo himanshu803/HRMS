@@ -9,6 +9,13 @@ angular.module('myApp.admin', [
 
   .config(['$locationProvider','$routeProvider', function($locationProvider, $routeProvider) {
     $routeProvider.when('/admin', {
+      resolve: {
+        "check": function ($location, $rootScope) {
+          if(!$rootScope.loggedIn) {
+            $location.path('/');
+          }
+        }
+      },
       templateUrl: 'features/admin/admin.html',
       controller: 'adminCtrl'
     });

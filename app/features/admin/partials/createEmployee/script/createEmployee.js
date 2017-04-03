@@ -1,15 +1,17 @@
 'use strict';
 
-angular.module('myApp.admin.createEmployee', ['ngRoute'])
+angular.module('myApp.admin.createEmployee', ['ngRoute', 'angular-growl'])
 
-  .config(['$routeProvider', function($routeProvider) {
+  .config(['$routeProvider','growlProvider', function($routeProvider, growlProvider) {
     $routeProvider.when('/admin/createEmployee', {
       templateUrl: 'features/admin/partials/createEmployee/createEmployee.html',
       controller: 'createEmployeeCtrl'
     });
+    growlProvider.globalTimeToLive(2000);
+    growlProvider.onlyUniqueMessages(false);
   }])
 
-  .controller('createEmployeeCtrl', ['$rootScope','$scope','createEmployeeService', function($rootScope, $scope, createEmployeeService) {
+  .controller('createEmployeeCtrl', ['$rootScope','$scope','createEmployeeService','growl', function($rootScope, $scope, createEmployeeService, growl) {
      $scope.companies = ["I-tech Software Solution Pvt Ltd", "Java R&D Labs", "Shri Ganesh"];
      $scope.roles =["Admin", "Employee"];
 
@@ -41,10 +43,10 @@ angular.module('myApp.admin.createEmployee', ['ngRoute'])
       createEmployeeService.createNewEmployee(employeeData).then(function (response) {
         $rootScope.returnData = response.data;
         if (response.data.message == "Registered Successfully! ") {
-          alert("Employee Registered Successfully");
+          growl.success("Employee Registered Successfully", {title: "Success!"});
           $scope.reset();
         } else {
-          alert("Employee already registered");
+          growl.warning("Employee already registered", {title: "Error!"});
           return false;
         }
       });
@@ -55,7 +57,7 @@ angular.module('myApp.admin.createEmployee', ['ngRoute'])
     var _this = this;
 
     _this.createNewEmployee = function (data) {
-      return $http.post('http://192.168.1.127:8080/hrms/hrms_REST/createNewEmployee', data)
+      return $http.post('http://192.168.1.105:8080/hrms/hrms_REST/createNewEmployee', data)
     };
 
     return _this;
