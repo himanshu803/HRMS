@@ -57,7 +57,7 @@ angular.module('myApp.admin.createEmployee', ['ngRoute', 'angular-growl'])
     var _this = this;
 
     _this.createNewEmployee = function (data) {
-      return $http.post('http://192.168.1.105:8080/hrms/hrms_REST/createNewEmployee', data)
+      return $http.post('http://192.168.100.101:8080/hrms/hrms_REST/createNewEmployee', data)
     };
 
     return _this;

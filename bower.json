@@ -16,6 +16,7 @@
     "angular-moment": "1.0.1",
     "moment": "2.17.1",
     "angular-ui-bootstrap": "2.5.0",
-    "angular-growl-v2": "0.7.9"
+    "angular-growl-v2": "0.7.9",
+    "font-awesome": "4.7.0"
   }
 }

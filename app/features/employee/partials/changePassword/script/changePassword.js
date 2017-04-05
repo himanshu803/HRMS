@@ -25,7 +25,7 @@ angular.module('myApp.employee.changePassword', ['ngRoute', 'angular-growl'])
         "newPassword": $scope.formData.employeeNewPassword
       };
 
-      $http.get("http://192.168.1.105:8080/hrms/hrms_REST/changePassword/?id="+changePasswordData.id+"&oldPassword="+changePasswordData.oldPassword+"&newPassword="+changePasswordData.newPassword+"")
+      $http.get("http://192.168.100.101:8080/hrms/hrms_REST/changePassword/?id="+changePasswordData.id+"&oldPassword="+changePasswordData.oldPassword+"&newPassword="+changePasswordData.newPassword+"")
         .then(function(response) {
           $rootScope.returnData = response.data;
           growl.success(response.data.message, {title: "Success!"});

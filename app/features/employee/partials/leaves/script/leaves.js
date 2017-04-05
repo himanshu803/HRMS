@@ -107,8 +107,8 @@ angular.module('myApp.employee.leaves', ['ngRoute','ui.bootstrap', 'angularMomen
 
     // duration
     $scope.getDuration = function(start, end) {
-      var startDate = moment.utc(start, 'dd.MM.yyyy').local().format('d-MM-YYYY');
-      var endDate = moment.utc(end, 'dd.MM.yyyy').local().format('d-MM-YYYY');
+      var startDate = moment.utc(start, 'dd.MM.yyyy').local().format('DD-MM-YYYY');
+      var endDate = moment.utc(end, 'dd.MM.yyyy').local().format('DD-MM-YYYY');
       try {
         if (startDate == "Invalid date" || endDate == "Invalid date") {
           var date = ($scope.halfDays.length / 2);

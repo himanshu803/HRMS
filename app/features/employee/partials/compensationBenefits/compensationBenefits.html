@@ -1,0 +1,136 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#/employee">Employee Home</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="#/employee/createId">Create ID Card</a></li>
+    </ul>
+    <ul class="nav navbar-nav">
+      <li><a href="#/employee/leaves">Manage Leaves</a></li>
+    </ul>
+    <ul class="nav navbar-nav">
+      <li><a href="#/employee/compensationBenefits">Compensation & Benefits</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <div class="dropdown">
+        <span class="glyphicon glyphicon-menu-hamburger dropdown-toggle" data-toggle="dropdown"></span>
+        <ul class="dropdown-menu">
+          <li><a href="#/employee/changePassword">Change Password</a></li>
+          <li><a href="#/home"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
+      </div>
+    </ul>
+  </div>
+</nav>
+<br><br>
+<div class="container" data-ng-controller="changePasswordCtrl">
+  <div growl></div>
+  <ul class="nav nav-pills nav-justified">
+    <li class="active"><a data-toggle="pill" target="_self" href="#salary">Salary Details</a></li>
+    <li><a data-toggle="pill" target="_self" href="#bonus">Bonus Details</a></li>
+    <li><a data-toggle="pill" target="_self" href="#form">Online form submission</a></li>
+    <li><a data-toggle="pill" target="_self" href="#reward">Rewards and Benefits</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="salary" class="tab-pane fade in active"><br>
+      <!-- Grid -->
+      <div class="w3-row-padding">
+
+        <div class="w3-quarter w3-margin-bottom">
+          <ul class="w3-ul w3-border w3-center w3-hover-shadow">
+            <li class="w3-black w3-xlarge w3-padding-32">Salary Slip</li>
+            <li class="w3-padding-16"><b>Salary_Slip_Jan-17</b></li>
+            <li class="w3-padding-16"><b>Salary_Slip_Feb-17</b></li>
+            <li class="w3-padding-16"><b>Salary_Slip_March-17</b></li>
+            <li class="w3-padding-16"><b>Salary_Slip_April-17</b></li>
+            <li class="w3-padding-16"><b>Salary_Slip_May-17</b></li>
+            <li class="w3-padding-16"><b>Salary_Slip_June-17</b></li>
+            <li class="w3-black w3-padding-24">
+              <!--<button class="w3-button w3-green w3-padding-large">Sign Up</button>-->
+            </li>
+          </ul>
+        </div>
+
+        <div class="w3-quarter w3-margin-bottom">
+          <ul class="w3-ul w3-border w3-center w3-hover-shadow">
+            <li class="w3-dark-grey w3-xlarge w3-padding-32">PF Statement</li>
+            <li class="w3-padding-16"><b>PF_stm_Dec-16 to Jan-17</b></li>
+            <li class="w3-padding-16"><b>PF_stm_Jan-17 to Feb-17</b></li>
+            <li class="w3-padding-16"><b>PF_stm_Feb-17 to March-17</b></li>
+            <li class="w3-padding-16"><b>PF_stm_March-17 to April-17</b></li>
+            <li class="w3-padding-16"><b>PF_stm_April-17 to May-17</b></li>
+            <li class="w3-padding-16"><b>PF_stm_May-17 to June-17</b></li>
+            <li class="w3-dark-grey w3-padding-24">
+            </li>
+          </ul>
+        </div>
+
+        <div class="w3-quarter w3-margin-bottom">
+          <ul class="w3-ul w3-border w3-center w3-hover-shadow">
+            <li class="w3-light-gray w3-xlarge w3-padding-32">Form 16</li>
+            <li class="w3-padding-16"><b>FY_2011-2012</b></li>
+            <li class="w3-padding-16"><b>FY_2012-2013</b></li>
+            <li class="w3-padding-16"><b>FY_2013-2014</b></li>
+            <li class="w3-padding-16"><b>FY_2015-2015</b></li>
+            <li class="w3-padding-16"><b>FY_2016-2016</b></li>
+            <li class="w3-padding-16"><b>FY_2017-2017</b></li>
+            <li class="w3-light-gray w3-padding-24">
+              <!--<button class="w3-button w3-green w3-padding-large">Sign Up</button>-->
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+    <!--==End Salary==-->
+
+    <div id="bonus" class="tab-pane fade"><br>
+        <div class="w3-container w3-card w3-white w3-margin-bottom">
+          <div class="w3-container">
+            <div class="col-md-12">
+              <h5 class="col-sm-4 col-md-3 w3-tag w3-teal w3-round w3-padding-small"><b> Employee Code </b></h5>
+              <h5 class="col-sm-4 col-md-4"><b>HR/1003</b></h5>
+            </div>
+            <div class="col-md-12">
+              <h5 class="col-sm-4 col-md-3 w3-tag w3-teal w3-round w3-padding-small"><b> Date of Confirmation </b></h5>
+              <h5 class="col-sm-4 col-md-4"><b>13th Nov 2016</b></h5>
+            </div>
+            <div class="col-md-12">
+              <h5 class="col-sm-4 col-md-3 w3-tag w3-teal w3-round w3-padding-small"><b> Project Allotted </b></h5>
+              <h5 class="col-sm-4 col-md-4"><b>2</b></h5>
+            </div>
+            <div class="col-md-12">
+              <h5 class="col-sm-4 col-md-3 w3-tag w3-teal w3-round w3-padding-small"><b > Bonus Amount </b></h5>
+              <h5 class="col-sm-4 col-md-4"><b>Rs 00000</b></h5>
+            </div>
+            <div class="col-md-12">
+              <h5 class="col-sm-4 col-md-3 w3-tag w3-teal w3-round w3-padding-small"><b > Date of Bonus Payout </b></h5>
+              <h5 class="col-sm-4 col-md-4"><b>20th Dec 2016</b></h5>
+            </div>
+            <div class="col-md-12">
+              <h5 class="col-sm-4 col-md-3 w3-tag w3-teal w3-round w3-padding-small"><b > Bonus Redeemed Total </b></h5>
+              <h5 class="col-sm-4 col-md-4"><b>RS 0000000</b></h5>
+            </div>
+          </div>
+        </div>
+        <div class="w3-container w3-card w3-white w3-margin-bottom">
+          <div class="w3-container">
+            <div class="col-md-12">
+              <h5 class="col-sm-4 col-md-3 w3-tag w3-red w3-round w3-padding-small"><b> Bonus to be Refund/Repay </b></h5>
+              <h5 class="col-sm-4 col-md-4"><b>RS 00000</b></h5>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div id="form" class="tab-pane fade">
+      <h3>Forms</h3>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+    </div>
+    <div id="reward" class="tab-pane fade">
+      <h3>Reward</h3>
+      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+    </div>
+  </div>
+</div>

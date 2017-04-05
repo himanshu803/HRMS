@@ -9,6 +9,9 @@
     <ul class="nav navbar-nav">
       <li><a href="#/employee/leaves">Manage Leaves</a></li>
     </ul>
+    <ul class="nav navbar-nav">
+      <li><a href="#/employee/compensationBenefits">Compensation & Benefits</a></li>
+    </ul>
     <ul class="nav navbar-nav navbar-right">
       <div class="dropdown">
         <span class="glyphicon glyphicon-menu-hamburger dropdown-toggle" data-toggle="dropdown"></span>
@@ -21,7 +24,7 @@
   </div>
 </nav>
 <div class="container">
-  <ul class="nav nav-pills">
+  <ul class="nav nav-pills nav-justified" >
     <li class="active"><a data-toggle="pill" target="_self" href="#applyForLeaves">Apply Leaves</a></li>
     <li><a data-toggle="pill" target="_self" href="#leavesSummary">Leaves Summary</a></li>
   </ul>
@@ -137,10 +140,10 @@
       </div>
       <div class="col-md-12">
         <br>
-        <label for="description" class="col-xs-12 col-sm-3 col-md-1">Description:</label>
+        <h6 class="col-xs-12 col-sm-3 col-md-1"><b>Description:</b></h6>
         <div class="col-md-11">
           <div class="input-group">
-            <textarea class="form-control" name="description" id="description" data-ng-model="description" cols="120" rows="5"></textarea>
+            <textarea class="form-control" name="description" id="description" data-ng-model="description" cols="110" rows="5"></textarea>
           </div>
         </div>
       </div>
