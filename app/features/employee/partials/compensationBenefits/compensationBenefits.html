@@ -1,8 +1,8 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#/employee">Employee Home</a>
-    </div>
+    <ul class="nav navbar-nav">
+      <li><a class="navbar-brand" href="#/employee">Home</a></li>
+    </ul>
     <ul class="nav navbar-nav">
       <li><a href="#/employee/createId">Create ID Card</a></li>
     </ul>
@@ -10,7 +10,10 @@
       <li><a href="#/employee/leaves">Manage Leaves</a></li>
     </ul>
     <ul class="nav navbar-nav">
-      <li><a href="#/employee/compensationBenefits">Compensation & Benefits</a></li>
+      <li class="active"><a href="#/employee/compensationBenefits">Compensation & Benefits</a></li>
+    </ul>
+    <ul class="nav navbar-nav">
+      <li><a href="#/employee/grievance">Grievance</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <div class="dropdown">
@@ -23,14 +26,13 @@
     </ul>
   </div>
 </nav>
-<br><br>
-<div class="container" data-ng-controller="changePasswordCtrl">
+<div class="container">
   <div growl></div>
   <ul class="nav nav-pills nav-justified">
-    <li class="active"><a data-toggle="pill" target="_self" href="#salary">Salary Details</a></li>
-    <li><a data-toggle="pill" target="_self" href="#bonus">Bonus Details</a></li>
-    <li><a data-toggle="pill" target="_self" href="#form">Online form submission</a></li>
-    <li><a data-toggle="pill" target="_self" href="#reward">Rewards and Benefits</a></li>
+    <li class="active"><a data-toggle="pill" target="_self" href="#salary"><b>Salary Details</b></a></li>
+    <li><a data-toggle="pill" target="_self" href="#bonus"><b>Bonus Details</b></a></li>
+    <li><a data-toggle="pill" target="_self" href="#form"><b>Online form submission</b></a></li>
+    <li><a data-toggle="pill" target="_self" href="#reward"><b>Rewards and Benefits</b></a></li>
   </ul>
 
   <div class="tab-content">
@@ -42,7 +44,7 @@
           <ul class="w3-ul w3-border w3-center w3-hover-shadow">
             <li class="w3-black w3-xlarge w3-padding-32">Salary Slip</li>
             <li class="w3-padding-16"><b>Salary_Slip_Jan-17</b></li>
-            <li class="w3-padding-16"><b>Salary_Slip_Feb-17</b></li>
+            <li class= "w3-padding-16"><b>Salary_Slip_Feb-17</b></li>
             <li class="w3-padding-16"><b>Salary_Slip_March-17</b></li>
             <li class="w3-padding-16"><b>Salary_Slip_April-17</b></li>
             <li class="w3-padding-16"><b>Salary_Slip_May-17</b></li>
@@ -75,7 +77,7 @@
             <li class="w3-padding-16"><b>FY_2013-2014</b></li>
             <li class="w3-padding-16"><b>FY_2015-2015</b></li>
             <li class="w3-padding-16"><b>FY_2016-2016</b></li>
-            <li class="w3-padding-16"><b>FY_2017-2017</b></li>
+            <li class="w3-padding-16"><b>FY_2017-2018</b></li>
             <li class="w3-light-gray w3-padding-24">
               <!--<button class="w3-button w3-green w3-padding-large">Sign Up</button>-->
             </li>
@@ -87,50 +89,135 @@
     <!--==End Salary==-->
 
     <div id="bonus" class="tab-pane fade"><br>
-        <div class="w3-container w3-card w3-white w3-margin-bottom">
-          <div class="w3-container">
-            <div class="col-md-12">
-              <h5 class="col-sm-4 col-md-3 w3-tag w3-teal w3-round w3-padding-small"><b> Employee Code </b></h5>
-              <h5 class="col-sm-4 col-md-4"><b>HR/1003</b></h5>
-            </div>
-            <div class="col-md-12">
-              <h5 class="col-sm-4 col-md-3 w3-tag w3-teal w3-round w3-padding-small"><b> Date of Confirmation </b></h5>
-              <h5 class="col-sm-4 col-md-4"><b>13th Nov 2016</b></h5>
-            </div>
-            <div class="col-md-12">
-              <h5 class="col-sm-4 col-md-3 w3-tag w3-teal w3-round w3-padding-small"><b> Project Allotted </b></h5>
-              <h5 class="col-sm-4 col-md-4"><b>2</b></h5>
-            </div>
-            <div class="col-md-12">
-              <h5 class="col-sm-4 col-md-3 w3-tag w3-teal w3-round w3-padding-small"><b > Bonus Amount </b></h5>
-              <h5 class="col-sm-4 col-md-4"><b>Rs 00000</b></h5>
-            </div>
-            <div class="col-md-12">
-              <h5 class="col-sm-4 col-md-3 w3-tag w3-teal w3-round w3-padding-small"><b > Date of Bonus Payout </b></h5>
-              <h5 class="col-sm-4 col-md-4"><b>20th Dec 2016</b></h5>
-            </div>
-            <div class="col-md-12">
-              <h5 class="col-sm-4 col-md-3 w3-tag w3-teal w3-round w3-padding-small"><b > Bonus Redeemed Total </b></h5>
-              <h5 class="col-sm-4 col-md-4"><b>RS 0000000</b></h5>
-            </div>
+      <div class="w3-container w3-card w3-white w3-margin-bottom">
+        <div class="w3-container">
+          <div class="col-md-12">
+            <h5 class="col-sm-4 col-md-3 w3-tag w3-teal w3-round w3-padding-small"><b> Employee Code </b></h5>
+            <h5 class="col-sm-4 col-md-4"><b>HR/1003</b></h5>
+          </div>
+          <div class="col-md-12">
+            <h5 class="col-sm-4 col-md-3 w3-tag w3-teal w3-round w3-padding-small"><b> Date of Confirmation </b></h5>
+            <h5 class="col-sm-4 col-md-4"><b>13th Nov 2016</b></h5>
+          </div>
+          <div class="col-md-12">
+            <h5 class="col-sm-4 col-md-3 w3-tag w3-teal w3-round w3-padding-small"><b> Project Allotted </b></h5>
+            <h5 class="col-sm-4 col-md-4"><b>2</b></h5>
+          </div>
+          <div class="col-md-12">
+            <h5 class="col-sm-4 col-md-3 w3-tag w3-teal w3-round w3-padding-small"><b > Bonus Amount </b></h5>
+            <h5 class="col-sm-4 col-md-4"><b>Rs 00000</b></h5>
+          </div>
+          <div class="col-md-12">
+            <h5 class="col-sm-4 col-md-3 w3-tag w3-teal w3-round w3-padding-small"><b > Date of Bonus Payout </b></h5>
+            <h5 class="col-sm-4 col-md-4"><b>20th Dec 2016</b></h5>
+          </div>
+          <div class="col-md-12">
+            <h5 class="col-sm-4 col-md-3 w3-tag w3-teal w3-round w3-padding-small"><b > Bonus Redeemed Total </b></h5>
+            <h5 class="col-sm-4 col-md-4"><b>RS 0000000</b></h5>
           </div>
         </div>
-        <div class="w3-container w3-card w3-white w3-margin-bottom">
-          <div class="w3-container">
-            <div class="col-md-12">
-              <h5 class="col-sm-4 col-md-3 w3-tag w3-red w3-round w3-padding-small"><b> Bonus to be Refund/Repay </b></h5>
-              <h5 class="col-sm-4 col-md-4"><b>RS 00000</b></h5>
-            </div>
+      </div>
+      <div class="w3-container w3-card w3-white w3-margin-bottom">
+        <div class="w3-container">
+          <div class="col-md-12">
+            <h5 class="col-sm-4 col-md-3 w3-tag w3-red w3-round w3-padding-small"><b> Bonus to be Refund/Repay </b></h5>
+            <h5 class="col-sm-4 col-md-4"><b>RS 00000</b></h5>
           </div>
         </div>
+      </div>
     </div>
-    <div id="form" class="tab-pane fade">
-      <h3>Forms</h3>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+    <!--End Bonus-->
+    <div id="form" class="tab-pane fade"><br>
+      <div class="w3-container w3-card w3-light-gray w3-margin-bottom">
+         <div class="w3-container">
+           <div class="col-md-12 col-md-offset-1">
+             <div class="col-md-6 w3-text-blue-grey"><h4>PF nomination form 2</h4></div>
+             <div class="col-md-6 w3-text-blue-grey w3-text-blue-grey"><h4>Identity card Request form</h4></div>
+             <div class="col-md-6 w3-text-blue-grey"><h4>PF withdrawal form 19</h4></div>
+             <div class="col-md-6 w3-text-blue-grey"><h4>Leave application form</h4></div>
+             <div class="col-md-6 w3-text-blue-grey"><h4>Pension withdrawal form10C</h4></div>
+             <div class="col-md-6 w3-text-blue-grey"><h4>PF advance form</h4></div>
+             <div class="col-md-6 w3-text-blue-grey"><h4>PF Transfer form 13 </h4></div>
+             <div class="col-md-6 w3-text-blue-grey"><h4>Employee feedback form</h4></div>
+             <div class="col-md-6 w3-text-blue-grey"><h4>ESI  Enrolment form 2</h4></div>
+             <div class="col-md-6 w3-text-blue-grey"><h4>Induction Feedback form</h4></div>
+             <div class="col-md-6 w3-text-blue-grey"><h4>ESI Family declaration form 1A</h4></div>
+             <div class="col-md-6 w3-text-blue-grey"><h4>Gratuity Nomination form</h4></div>
+             <div class="col-md-6 w3-text-blue-grey"><h4>ESI Identity card form 4&4A</h4></div>
+             <div class="col-md-6 w3-text-blue-grey"><h4>PAN Application form</h4></div>
+             <div class="col-md-6 w3-text-blue-grey"><h4>Medical claim Reimbursement form</h4></div>
+             <div class="col-md-6 w3-text-blue-grey"><h4>Cash less hospitalization form</h4></div>
+             <div class="col-md-6 w3-text-blue-grey"><h4>Salary advance form</h4></div>
+           </div>
+         </div>
+      </div>
     </div>
-    <div id="reward" class="tab-pane fade">
-      <h3>Reward</h3>
-      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+    <!--End online forms-->
+    <div id="reward" class="tab-pane fade"><br>
+        <div class="w3-container">
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover w3-center">
+              <thead>
+                <tr class="w3-deep-orange">
+                  <th class="w3-center">Benefits</th>
+                  <th class="w3-center">Eligible for</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Mobile Allowances</td>
+                  <td>Rs 000</td>
+                </tr>
+                <tr>
+                  <td>Night Shift Allowance</td>
+                  <td>Rs 000</td>
+                </tr>
+                <tr>
+                  <td>Food Allowance</td>
+                  <td>Rs 000</td>
+                </tr>
+                <tr>
+                  <td>Petrol Allowance</td>
+                  <td>Rs 000</td>
+                </tr>
+                <tr>
+                  <td>Cab Allowance</td>
+                  <td>Rs 000</td>
+                </tr>
+                <tr>
+                  <td>Health Insurance</td>
+                  <td>Rs 000</td>
+                </tr>
+                <tr>
+                  <td>Life Insurance</td>
+                  <td>Rs 000</td>
+                </tr>
+                <tr>
+                  <td>Sudexo Coupon</td>
+                  <td>Rs 000</td>
+                </tr>
+                <tr>
+                  <td>LTA</td>
+                  <td>Rs 000</td>
+                </tr>
+                <tr>
+                  <td>Special Reward</td>
+                  <td>Movie Tickets</td>
+                </tr>
+                <tr>
+                  <td>Certificate</td>
+                  <td>Employee of the month</td>
+                </tr>
+                <tr>
+                  <td>Credit Card</td>
+                  <td>Issued</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
 </div>
+
+

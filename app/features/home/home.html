@@ -1,13 +1,9 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#/home">HRMS</a>
-    </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
-      <li class="dropdown"><a href="#">Page 1</a>
-      </li>
-      <li><a href="#">Page 2</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#contact" target="_self">Contact</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -16,109 +12,88 @@
   </div>
 </nav><!-- end Navbar -->
 
-<div class="jumbotron" id="jumbotron">
-  <div class="container text-center">
-    <h1> <strong>HRMS</strong></h1>
-    <h3>Bring Brands to life with refreshing online experiences. We create awesome careers opportunities.</h3>
+<div class="w3-content" style="max-width:1100px;margin-bottom:80px">
 
-    <div class="btn-group">
-      <div class="btn-group btn-group-lg">
-        <button type="button" class="btn btn-success">Download App</button>
-        <button type="button" class="btn btn-primary">Visit Office</button>
-        <button type="button" class="btn btn-warning">Spread the world</button>
+  <div class="w3-panel">
+    <h1><b>HRMS</b></h1>
+    <p>Human Resource Management System</p>
+  </div>
+
+  <!-- Slideshow -->
+  <div class="w3-container">
+    <div class="w3-display-container mySlides">
+      <img src="../../assets/images/coffee.jpg" style="width:100%">
+      <div class="w3-display-topleft w3-container w3-padding-32">
+        <span class="w3-white w3-padding-large w3-animate-bottom">Lorem ipsum</span>
       </div>
     </div>
   </div>
-</div><!-- end jumbotron -->
 
-<div class="container">
-  <section id="feedback">
-    <div class="page-header" >
-      <h2>Feedback.<small> check out awesome feedback</small></h2>
+  <!-- Grid -->
+  <div class="w3-row w3-container">
+    <div class="w3-center w3-padding-64">
+      <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">What We Offer</span>
+    </div>
+    <div class="w3-col l3 m6 w3-light-grey w3-container w3-padding-16">
+      <h3>Design</h3>
+      <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
     </div>
 
-    <div class="row">
-      <div class="col-lg-4">
-        <blockquote>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, maxime perferendis repudiandae accusamus quos voluptatem expedita quidem rem quas? Dicta placeat fugiat ex nostrum quaerat, praesentium quo possimus hic ea.</p>
-          <footer>Sourabh Singh</footer>
-        </blockquote>
-      </div>
-      <div class="col-lg-4">
-        <blockquote>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, maxime perferendis repudiandae accusamus quos voluptatem expedita quidem rem quas? Dicta placeat fugiat ex nostrum quaerat, praesentium quo possimus hic ea.</p>
-          <footer>Shubham Gupta</footer>
-        </blockquote>
-      </div>
-      <div class="col-lg-4">
-        <blockquote>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, maxime perferendis repudiandae accusamus quos voluptatem expedita quidem rem quas? Dicta placeat fugiat ex nostrum quaerat, praesentium quo possimus hic ea.</p>
-          <footer>Ushma Chaurasia</footer>
-        </blockquote>
-      </div>
+    <div class="w3-col l3 m6 w3-grey w3-container w3-padding-16">
+      <h3>Branding</h3>
+      <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
     </div>
-  </section><!-- end feedback -->
-  <section>
-    <div class="jumbotron" id="subscribe">
-      <div class="container text-center">
-        <h2>Subscribe for more free stuff</h2>
-        <h4>Enter Your Name and Email</h4>
-        <form action="" class="form-inline">
-          <div class="row text-centre">
-            <div class="row">
-              <div class="col-sm-1">
-                <b>Name</b>
-              </div>
-              <div class="col-sm-2">
-                <input type="text" class="form-control" id="name" placeholder="Enter your name">
-              </div>
-              <div class="col-sm-1 col-sm-offset-1">
-                <b>Email</b>
-              </div>
-              <div class="col-sm-2">
-                <input type="text" class="form-control" id="email" placeholder="Enter your email">
-              </div>
-              <div class="col-sm-3 col-sm-offset-1">
-                <button type="submit" class="btn btn-default" class="col-sm-12">Subscribe</button>
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
+
+    <div class="w3-col l3 m6 w3-dark-grey w3-container w3-padding-16">
+      <h3>Consultation</h3>
+      <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
     </div>
-  </section> <!-- end jumbotron -->
+
+    <div class="w3-col l3 m6 w3-black w3-container w3-padding-16">
+      <h3>Promises</h3>
+      <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <div class="w3-center w3-padding-64" id="contact">
+    <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">Contact Us</span>
+  </div>
+
+  <form class="w3-container" action="/action_page.php" target="_blank">
+    <div class="w3-section">
+      <label>Name</label>
+      <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" type="text" name="Name" required>
+    </div>
+    <div class="w3-section">
+      <label>Email</label>
+      <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" type="text" name="Email" required>
+    </div>
+    <div class="w3-section">
+      <label>Subject</label>
+      <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" name="Subject" required>
+    </div>
+    <div class="w3-section">
+      <label>Message</label>
+      <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" name="Message" required>
+    </div>
+    <button type="submit" class="w3-button w3-block w3-black">Send</button>
+  </form>
+
 </div>
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-2">
-        <h6>Copyright &copy;2017 I-tech Software Solution Pvt Ltd</h6>
-      </div><!-- end col-sm-2 -->
-      <div class="col-sm-4">
-        <h6>About Us</h6>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum necessitatibus labore repellat odio recusandae modi repellendus molestiae, obcaecati assumenda debitis tempora, velit perspiciatis voluptatibus explicabo beatae quia quam neque, ipsa.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus voluptates sed soluta voluptatem accusamus nulla quisquam nostrum, eos et quidem ad laboriosam, adipisci perferendis magni culpa necessitatibus unde corporis quae.</p>
-      </div><!-- end col-sm-4 -->
-      <div class="col-sm-2">
-        <h6>Navigation</h6>
-        <ul class="unstyled">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">Links</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </div><!-- end col-sm-2 -->
-      <div class="col-sm-2">
-        <h6>Follow Us</h6>
-        <ul class="unstyled">
-          <li><a href="#">Twitter</a></li>
-          <li><a href="#">Facebook</a></li>
-          <li><a href="#">Google Plus</a></li>
-        </ul>
-      </div><!-- end col-sm-2 -->
 
-      <div class="col-sm-2">
-        <h6>Coded <span class="glyphicon glyphicon-edit"></span> by Himanshu</h6>
-      </div>
-    </div><!-- end row -->
-  </div><!-- end container -->
+<!-- Footer -->
+
+<footer class="w3-container w3-padding-32 w3-dark-grey w3-center">
+  <a href="#" class="w3-button w3-black w3-margin"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  <div class="w3-xlarge w3-section">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+  <p>Powered by <a href="https://www.itechsoftwaresolution.com" title="Itech" target="_blank" class="w3-hover-text-green">I-tech Software Solution Pvt Ltd</a></p>
 </footer>
+

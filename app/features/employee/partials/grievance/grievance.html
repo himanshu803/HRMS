@@ -1,0 +1,147 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li><a class="navbar-brand" href="#/employee">Home</a></li>
+    </ul>
+    <ul class="nav navbar-nav">
+      <li><a href="#/employee/createId">Create ID Card</a></li>
+    </ul>
+    <ul class="nav navbar-nav">
+      <li><a href="#/employee/leaves">Manage Leaves</a></li>
+    </ul>
+    <ul class="nav navbar-nav">
+      <li><a href="#/employee/compensationBenefits">Compensation & Benefits</a></li>
+    </ul>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#/employee/grievance">Grievance</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <div class="dropdown">
+        <span class="glyphicon glyphicon-menu-hamburger dropdown-toggle" data-toggle="dropdown"></span>
+        <ul class="dropdown-menu">
+          <li><a href="#/employee/changePassword">Change Password</a></li>
+          <li><a href="#/home"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
+      </div>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <div growl></div>
+  <!--- Left column--->
+  <div class="w3-twothird">
+    <ul class="nav nav-pills nav-justified">
+      <li class="active"><a data-toggle="pill" target="_self" href="#forEmp"><b>From Employee</b></a></li>
+      <li><a data-toggle="pill" target="_self" href="#forDepart"><b>From Department</b></a></li>
+      <li><a data-toggle="pill" target="_self" href="#misc"><b>Miscellaneous</b></a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div id="forEmp" class="tab-pane fade in active"><br>
+        <div class="w3-container w3-card w3-white w3-margin-bottom"><br>
+          <form class="w3-container" action="/action_page.php" target="_blank">
+            <div class="col-lg-12">
+              <label class="col-md-4">Name of Employee :</label>
+              <div class="col-md-6">
+                <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" type="text" name="Name" required>
+              </div>
+              <span class="w3-text-red col-md-12 col-md-offset-3">Enter the name of the employee against whom you want to raise complaint.</span>
+            </div>
+            <div class="col-lg-12">
+              <br>
+              <label class="col-md-4">Grievance Detail :</label>
+              <div class="col-md-6">
+                <textarea name="detail" class="w3-input w3-border w3-hover-border-black" cols="10" rows="5" required></textarea>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <br>
+              <label class="col-md-4">Action Suggested to HR :</label>
+              <div class="col-md-6">
+                <textarea name="action" class="w3-input w3-border w3-hover-border-black" cols="10" rows="5" required></textarea><br>
+              </div>
+            </div>
+            <div class="col-md-12 w3-center">
+              <button type="submit" class="w3-button w3-black">Submit</button>
+            </div>
+          </form>
+          <br>
+        </div>
+      </div>
+      <!--==End From Employee==-->
+
+      <div id="forDepart" class="tab-pane fade"><br>
+        <div class="w3-container w3-card w3-white w3-margin-bottom"><br>
+          <form class="w3-container" action="/action_page.php" target="_blank">
+            <div class="col-lg-12">
+              <label class="col-md-4">Name of Department :</label>
+              <div class="col-md-6">
+                <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" type="text" name="Name" required>
+              </div>
+              <span class="w3-text-red col-md-12 col-md-offset-3">Enter the department name whom you want to raise complaint.</span>
+            </div>
+            <div class="col-lg-12">
+              <br>
+              <label class="col-md-4">Grievance Detail :</label>
+              <div class="col-md-6">
+                <textarea name="detail" class="w3-input w3-border w3-hover-border-black" cols="10" rows="5" required></textarea>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <br>
+              <label class="col-md-4">Action Suggested to HR :</label>
+              <div class="col-md-6">
+                <textarea name="action" class="w3-input w3-border w3-hover-border-black" cols="10" rows="5" required></textarea><br>
+              </div>
+            </div>
+            <div class="col-md-12 w3-center">
+              <button type="submit" class="w3-button w3-black">Submit</button>
+            </div>
+          </form>
+          <br>
+        </div>
+      </div>
+      <!--End From Department-->
+
+      <div id="misc" class="tab-pane fade"><br>
+        <div class="w3-container w3-card w3-white w3-margin-bottom"><br>
+          <form class="w3-container" action="/action_page.php" target="_blank">
+            <div class="col-lg-12">
+              <br>
+              <label class="col-md-4">Write grievance with all essential detail :</label>
+              <div class="col-md-6">
+                <textarea name="detail" class="w3-input w3-border w3-hover-border-black" cols="10" rows="5" required></textarea>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <br>
+              <label class="col-md-4">Action Suggested to HR :</label>
+              <div class="col-md-6">
+                <textarea name="action" class="w3-input w3-border w3-hover-border-black" cols="10" rows="5" required></textarea><br>
+              </div>
+            </div>
+            <div class="col-md-12 w3-center">
+              <button type="submit" class="w3-button w3-black">Submit</button>
+            </div>
+          </form>
+          <br>
+        </div>
+      </div>
+      <!--End Miscellaneous-->
+
+    </div>
+  </div>
+  <!---End Left column--->
+  <div class="w3-third">
+    <div class="w3-container w3-card w3-white w3-margin-bottom w3-center w3-margin-left">
+      <h4 class="w3-text-teal"><b>Grievance Status</b></h4>
+    </div>
+    <div class="w3-container w3-card w3-white w3-margin-bottom w3-center w3-margin-left w3-margin-top">
+      <h4 class="w3-text-teal">Issue 1 - <span class="w3-text-green">Open</span></h4>
+      <h4 class="w3-text-teal">Issue 2 - <span class="w3-text-green">Open</span></h4>
+      <h4 class="w3-text-teal">Issue 3 - <span class="w3-text-green">Open</span></h4>
+      <h4 class="w3-text-teal">Issue 4 - <span class="w3-text-red">Close</span></h4>
+      <h4 class="w3-text-teal">Issue 5 - <span class="w3-text-red">Close</span></h4>
+    </div>
+  </div>
+</div>

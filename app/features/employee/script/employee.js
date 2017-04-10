@@ -5,7 +5,8 @@ angular.module('myApp.employee', [
   'myApp.employee.createId',
   'myApp.employee.changePassword',
   'myApp.employee.leaves',
-  'myApp.employee.compensationBenefits'
+  'myApp.employee.compensationBenefits',
+  'myApp.employee.grievance'
 ])
 
   .config(['$locationProvider','$routeProvider', function($locationProvider, $routeProvider) {
