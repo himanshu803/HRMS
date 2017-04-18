@@ -66,8 +66,8 @@ angular.module('myApp.employee.createId', ['ngRoute','ngFileUpload', 'angularMom
     //ng-file-upload
     $scope.uploadPic = function(file) {
       file.upload = Upload.upload({
-        url: 'http://192.168.1.130:8080/hrms/hrms_REST/submitIDFormImage',
-        data: {'emp_id': $scope.formData.employeeId, file: file}
+        url: 'http://192.168.1.127:8080/hrms/hrms_REST/submitIDFormImage',
+        data: {'id': $scope.formData.employeeId, file: file}
       });
 
       file.upload.then(function (response) {
@@ -124,7 +124,7 @@ angular.module('myApp.employee.createId', ['ngRoute','ngFileUpload', 'angularMom
     var _this = this;
 
     _this.createId = function (data) {
-      return $http.post("http://192.168.1.130:8080/hrms/hrms_REST/submitIDForm", data);
+      return $http.post("http://192.168.1.127:8080/hrms/hrms_REST/submitIDForm", data);
     };
 
     return _this;

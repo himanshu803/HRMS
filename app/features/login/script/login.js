@@ -62,7 +62,7 @@ angular.module('myApp.login', ['ngRoute', 'angular-growl'])
   var _this = this;
 
   _this.doLogin = function (data) {
-     return $http.post('http://192.168.1.130:8080/hrms/hrms_REST/login', data)
+     return $http.post('http://192.168.1.127:8080/hrms/hrms_REST/login', data)
   };
 
   return _this;
